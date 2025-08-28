@@ -7,6 +7,9 @@
     ./cachix.nix
     ./user-config.nix
     ./wsl.nix
+    ./immich.nix
+    #./dualshock.nix
+    #./anythingllm.nix
   ];
 in {
   inherit imports;
@@ -16,5 +19,6 @@ in {
   networking = {
     hostName = host;
     networkmanager.enable = true;
+    firewall.allowedTCPPorts = [2283]; #Immich
   };
 }

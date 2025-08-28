@@ -16,7 +16,7 @@
 in {
   time.timeZone = timezone;
   i18n = {
-    defaultLocale = en_US;
+    defaultLocale = pt_BR;
     extraLocaleSettings = {
       LC_ADDRESS = pt_BR;
       LC_IDENTIFICATION = pt_BR;

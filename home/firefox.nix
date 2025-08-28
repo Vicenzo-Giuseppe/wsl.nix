@@ -79,7 +79,7 @@
   };
 in {
   programs.firefox = {
-    enable = true;
+    enable = false;
     package = with pkgs;
       wrapFirefox firefox-esr-128-unwrapped {
         extraPolicies = {

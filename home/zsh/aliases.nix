@@ -5,6 +5,7 @@ in {
   programs.zsh.shellAliases = {
     c = "clear";
     cat = "bat";
+    mk = "mkdir";
     # exa listFiles
     x = "${eza} -T "; # PathTreeFormat
     xs = "${eza} -l -T ${overview}"; # AllTreeFormat

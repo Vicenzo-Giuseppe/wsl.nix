@@ -20,6 +20,7 @@ in {
       "steam-original"
       "steam-run"
       "steamcmd"
+      "minecraft-server"
       "lunar-client"
       "discord"
       "steam"

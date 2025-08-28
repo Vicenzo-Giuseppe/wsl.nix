@@ -1,8 +1,18 @@
 {pkgs, ...}: let
   pkgs_ = with pkgs; [
-    git
-    lunarvim
     wezterm
+    git
+    direnv
+    lunarvim
+    nix-direnv
+    devenv
+    input-remapper
+    #git
+    #lunarvim
+    #devenv
+    #direnv
+    #nix-direnv
+    #wezterm
     #gcc
     #yarn
     #pnpm
@@ -37,7 +47,6 @@
     #yarn
     #lazygit
     #wget
-    #direnv
     #stylua
     #shellcheck
     #deadnix

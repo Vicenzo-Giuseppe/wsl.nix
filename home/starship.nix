@@ -4,8 +4,8 @@
   colors,
   ...
 }: let
-  username =
-    lib.toUpper (lib.substring 0 1 user) + lib.substring 1 (-1) user;
+  username = with lib;
+    toUpper (substring 0 1 user) + substring 1 (-1) user;
 in {
   programs.starship = {
     enable = true;
@@ -14,9 +14,9 @@ in {
       add_newline = false;
       format = lib.concatStrings [
         "$username"
-        "$battery"
         "$hostname"
         "$os"
+        "$battery"
         "$shlvl"
         "$directory"
         "$git_branch"
@@ -84,7 +84,7 @@ in {
         truncation_length = 10;
         truncate_to_repo = false;
         style = "
-          fg:bold ${sky} bg:${specialBlue}
+          fg:bold ${sky} bg:${Blue}
         ";
         format = "[:: ](bold  ${lavender} )[$path ]($style)[$read_only]($read_only_style) ";
       };
@@ -147,7 +147,7 @@ in {
         symbol = "🔺 ";
       };
       fill = {
-        style = "italic bold ${specialTeal}";
+        style = "italic bold ${teal}";
       };
       custom.readme = {
         detect_files = ["README.md" "readme.org"];
@@ -169,26 +169,44 @@ in {
       os.symbols = {
         NixOS = "[ ](fg:${blue})";
       };
+      nix_shell = {
+        format = "[$state(\($name\))]($style) ";
+        style = "bold italic ${teal}";
+        impure_msg = "";
+        pure_msg = "󱗿";
+        unknown_msg = "";
+        heuristic = true;
+      };
       battery = {
         full_symbol = "󰁹";
         charging_symbol = "󰂄";
         discharging_symbol = "󰂃";
         empty_symbol = "󰂎";
-        format = "[$symbol$percentage]($style)";
+        format = "[$symbol]($style) ";
         display = [
           {
             threshold = 10;
             style = "bold ${red}";
+            discharging_symbol = "*";
+            charging_symbol = " 󰢜";
+          }
+          {
+            threshold = 20;
+            style = "bold ${yellow}";
+            discharging_symbol = "*";
+            charging_symbol = " 󰂆";
           }
           {
             threshold = 30;
-            style = "bold ${green}";
-            discharging_symbol = "💦";
+            style = "bold ${blue}";
+            discharging_symbol = "*";
+            charging_symbol = " 󰂇";
           }
           {
             threshold = 50;
-            style = "bold ${blue}";
-            discharging_symbol = "💦";
+            style = "bold ${teal}";
+            discharging_symbol = "*";
+            charging_symbol = " 󰢝";
           }
         ];
       };
